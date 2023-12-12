@@ -1,0 +1,158 @@
+
+{% extends "emails/base.html.twig" %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <tr>
+        <td class="" style="vertical-align:top;width:588px;">
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="588px" style="width: 588px;">
+                <tbody>
+                    <tr>
+                        <td style="vertical-align:top;padding:50px 23px 30px;">
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style width="100%">
+                                <tbody>
+
+                                    <tr>
+                                        <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                                            <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                                                Bonjour {{command.client.firstName}} {{command.client.lastName}},
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                                            <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                                                Merci pour votre commande.
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                                            <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                                                Vous pouvez retrouver votre commande dans votre espace et contacter dès à présent votre réparateur pour prendre rendez-vous avec lui.  
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                                            <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                                                Pour cela,            
+                                                <a class="link-default" href="{{ urlCommand }}" target="_blank" style="color: #9ACA3C; line-height: 18px; transition: .5s all;">
+                                                 cliquez ici
+                                                </a>.
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td align="left" style="font-size:0px;padding:0;word-break:break-word;">
+                                            <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                                                Voici votre récapitulatif  :
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="bloc-tarif-outlook" style="vertical-align:top;width:307px;">
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="307px" style="float: left; margin-left: 23px; font-size: 0px; text-align: left; direction: ltr; display: inline-block; vertical-align: top; width: 307px;">
+                <tbody>
+                    <tr>
+                        <td align="left" style="font-size:0px;padding:28px 23px;word-break:break-word; border: 1px solid #F4F4F4; background: #FFFFFF; box-shadow: 0 2px 6px 0 rgba(182, 172, 251, .42); border-radius: 7px;">
+                            <table cellpadding="0" cellspacing="0" width="100%" border="0" style="color:#000000;font-family:Roboto, Helvetica, Arial, sans-serif;font-size:15px;line-height:22px;table-layout:auto;width:100%;border:none;">
+
+                                <tr>
+                                    <td colspan="2" style="padding: 0px 0 13px; border-bottom: 1px solid #F4F4F4;">
+                                        <p style="font-family:Montserrat, sans-serif; font-weight: 500;  color: #AFD565; font-size:17px; margin: 0 0 6px;">
+                                            Nom du service
+                                        </p>
+                                        <p style="font-family:Montserrat, sans-serif; font-size:13px; line-height: 19px; margin: 0;">
+                                            {{command.benefit.service.name}}
+                                        </p>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="padding:24px 0 20px; width: 81px;border-bottom: 1px solid #F4F4F4;">
+                                        <img src="{{domaine}}{{ command.benefit.user.picture ? command.benefit.user.picture : "images/noImage.png"}}" style="line-height:1;height:auto;width:81px;" align="center" width="51px" height="auto" alt="{{ command.benefit.user.enterprise }}" />
+                                    </td>
+                                    <td style="padding:24px 0 20px 20px; width:100%; border-bottom: 1px solid #F4F4F4;">
+                                        <div style="font-family:Montserrat, sans-serif; padding-left: 14px; display: block; font-size: 14px; font-weight: 600; line-height: 17px;">
+                                            {{ command.benefit.user.enterprise }}
+                                        </div>
+                                        <div style="font-family:Montserrat, sans-serif; padding-left: 14px; display: block; font-size:13px; color: #748993; line-height: 14px; margin: 0;">
+                                            {{ command.benefit.user.address }}
+                                            {{ command.benefit.user.additionalAddress }}
+                                            {{ command.benefit.user.postalCode }}
+                                            {{ command.benefit.user.city }}
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2" style="padding: 17px 0; border-bottom: 1px solid #F4F4F4;">
+                                        <p style="font-family:Montserrat, sans-serif; font-weight: 500;  color: #AFD565; font-size:17px; margin: 0 0 6px;">
+                                            Mode de délivrance
+                                        </p>
+                                        <p style="font-family:Montserrat, sans-serif; font-size:13px; line-height: 19px; margin: 0; color: #748993;">
+                                            <span>
+                                                {{command.deliveryMode.deliveryModeType.name}}
+                                            </span>
+                                        </p>
+                                        {% if command.deliveryMode.deliveryModeType.requireDeliveryAddress %}
+                                            <p style="font-family:Montserrat, sans-serif; font-size:13px; line-height: 19px; margin: 0; color: #748993;">
+                                                <span>
+                                                    {{ command.address }}
+                                                    {{ command.additionalAddress }}
+                                                    {{ command.postalCode }}
+                                                    {{ command.city }}
+                                                </span>
+                                            </p>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="padding: 17px 0; font-family:Montserrat, sans-serif; font-weight: 500;  color: #AFD565; font-size:16px; width:190px;">
+                                        Total                            
+                                    </td>
+                                    <td style="padding: 17px 0; font-size: 16px; font-weight: 600; text-align: right; color: #3F474B;">
+                                        {% if command.total > 0 %}
+                                           {{ command.total | number_format(2) }} € TTC                                                 
+                                        {% else %}
+                                            GRATUIT                                
+                                        {% endif %}
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+{% endblock %}
+
+{% block footer %}
+  {{ parent() }}
+{% endblock %}
+    

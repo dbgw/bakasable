@@ -1,0 +1,6 @@
+gesdinet_jwt_refresh_token:
+  ttl: 2592000 # 30 Days
+  ttl_update: true
+  user_identity_field: email
+
+  

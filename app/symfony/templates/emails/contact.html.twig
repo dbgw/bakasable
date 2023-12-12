@@ -1,0 +1,79 @@
+
+{% extends "emails/base.html.twig" %}
+
+{% block title %}
+  {{ parent() }}
+{% endblock %}
+
+{% block header %}
+  {{ parent() }}
+{% endblock %}
+
+{% block content %}
+  <tr>
+    <td class="" style="vertical-align:top;width:588px;">
+      <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+        <tbody>
+          <tr>
+            <td style="vertical-align:top;padding:50px 23px 30px;">
+              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style width="100%">
+                <tbody>
+
+                  <tr>
+                    <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                      <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                        Bonjour ,                 
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                      <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                        Vous avez reçu une nouvelle demande de contact.
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                      <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                        <strong style="font-weight: 600;">
+                          Email:
+                        </strong>
+                        {{ data.email }}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                      <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                        <strong style="font-weight: 600;">
+                          Objet:
+                        </strong>
+                        {{ data.object }}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left" style="font-size:0px;padding:0px;word-break:break-word;">
+                      <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                        <strong style="font-weight: 600;">
+                          Message:
+                        </strong>
+                        {{ data.message }}
+                      </div>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+{% endblock %}
+
+{% block footer %}
+  {{ parent() }}
+{% endblock %}

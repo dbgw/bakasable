@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Path</title>
+    <g id="UI-Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.40686319">
+        <g id="Espace-client-:-Page-de-connexion" transform="translate(-981.000000, -256.000000)" fill="#000000" fill-rule="nonzero" stroke="#FFFFFF">
+            <g id="Group-21" transform="translate(387.000000, 215.000000)">
+                <g id="close" transform="translate(595.000000, 42.000000)">
+                    <polygon id="Path" points="28 3.29945922 24.7005408 0 13.9999638 10.7005046 3.29945922 0 -1.39888101e-14 3.29945922 10.7005046 13.9999638 -1.34742796e-14 24.7005408 3.29945922 28 13.9999638 17.2994954 24.7004684 28 27.9999276 24.7005408 17.2994954 13.9999638"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

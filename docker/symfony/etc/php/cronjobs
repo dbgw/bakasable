@@ -1,0 +1,6 @@
+
+#local => cronjob check payments repairman run every 5 minute
+*/5 * * * * cd /srv/symfony && /usr/local/bin/php bin/console app:check-repairman-payments >> var/log/cron.log 2>> var/log/cron.error
+
+#dev => cronjob check payments repairman run every hour
+#0 */1 * * * cd /var/www/fingz_dev/app/symfony && /usr/bin/php bin/console app:check-repairman-payments >> var/log/cron.log 2>> var/log/cron.error

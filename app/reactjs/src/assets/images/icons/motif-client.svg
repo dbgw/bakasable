@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="19px" viewBox="0 0 32 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Path</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="speech-bubble" transform="translate(0.000000, -0.857422)" fill="#EEEEEE" fill-rule="nonzero">
+            <path d="M8.75917794,19.8574219 L0,19.8574219 L6.19363421,13.5267256 C9.53317057,10.113287 11.618597,5.67361643 12.1792579,0.857421875 C12.1792579,0.857421875 32,9.73898798 32,9.73898798 C25.840228,16.196758 17.4941686,19.8574219 8.75917794,19.8574219 Z" id="Path"></path>
+        </g>
+    </g>
+</svg>

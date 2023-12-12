@@ -1,0 +1,72 @@
+{% extends "emails/base.html.twig" %}
+
+{% block title %}{{ parent()}}{% endblock %}
+
+{% block header %}{{ parent()}}{% endblock %}
+
+{% block content %}
+    <tr>
+        <td class="" style="vertical-align:top;width:588px;">
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                <tbody>
+                    <tr>
+                        <td style="vertical-align:top;padding:50px 23px 30px;">
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                                            <div
+                                            style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                                            Bonjour {{user.firstName}} {{user.lastName}},</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                                            <div
+                                            style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                                                Bienvenue et merci d’avoir rejoint la communauté des artisans partenaires de Fingz. <br/>
+                                                Ensemble, nous allons révolutionner le marché de la réparation! Votre compte est désormais activé sur la plateforme 
+                                                <a class="link-default" href="{{urlHome}}" target="_blank" style="color: #9ACA3C; line-height: 18px; transition: .5s all;">Fingz.fr</a>.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                                            <div
+                                            style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                                                Si vous n’avez pas encore généré votre mot de passe ou l’avez oublié, <a class="link-default" href="{{urlForgotPassword}}" target="_blank" style="color: #9ACA3C; line-height: 18px; transition: .5s all;">cliquer ici</a>. <br/>
+                                                Vous pouvez dès à présent accéder à votre espace pour créer votre page vitrine et ajouter vos prestations de service.<br/>
+                                                L’équipe Fingz est là pour vous aider à démarrer votre boutique en ligne : 
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                                            <div
+                                            style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                                            Mail : <a class="link-default" href="mailto:{{contact}}" target="_blank" style="color: #9ACA3C; line-height: 18px; transition: .5s all;">{{contact}}</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" style="font-size:0px;padding:0px;word-break:break-word;">
+                                            <div
+                                            style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                                            Tel : <a class="link-default" href="tel:{{phone}}" target="_blank" style="text-decoration: none;color: #9ACA3C; line-height: 18px; transition: .5s all;">{{phone}}</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+              				</table>
+            			</td>
+          			</tr>
+        		</tbody>
+      		</table>
+    	</td>
+  	</tr>
+{% endblock %}
+
+{% block footer %}
+  {% set textFooter = 'Très sincèrement,' %}
+  {{ parent() }}
+{% endblock %}

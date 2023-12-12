@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="57px" height="66px" viewBox="0 0 57 66" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>box</title>
+    <g id="UI-Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Tunnel-:-Etape-3/3---cas-forfait" transform="translate(-691.000000, -477.000000)" fill-rule="nonzero">
+            <g id="Group-2" transform="translate(0.000000, 177.000000)">
+                <g id="Group-14-Copy" transform="translate(503.000000, 265.000000)">
+                    <g id="box" transform="translate(188.000000, 35.000000)">
+                        <polygon id="Path" fill="#B8CE2E" points="18.5763 27.251364 18.525 27.2813718 18.525 46.8250195 14.761575 42.5381917 11.31165 43.9671343 11.31165 23.045986"></polygon>
+                        <polygon id="Path" fill="#C16752" points="57 16.5 57 49.5 28.5 66 28.5 32.9971421 56.99715 16.4985711"></polygon>
+                        <polygon id="Path" fill="#E48E66" points="28.5 32.9971421 18.5763 27.251364 47.07345 10.7527929 47.074875 10.7527929 56.99715 16.4985711"></polygon>
+                        <polygon id="Path" fill="#B8CE2E" points="47.07345 10.7527929 18.5763 27.251364 11.31165 23.045986 39.8088 6.54741491"></polygon>
+                        <polygon id="Path" fill="#C16752" points="39.8088 6.54741491 11.31165 23.045986 0.00285 16.4985711 28.5 0"></polygon>
+                        <polygon id="Path" fill="#E48E66" points="28.5 32.9971421 28.5 66 0 49.5 0 16.5 0.00285 16.4985711 11.31165 23.045986 11.31165 43.9671343 14.761575 42.5381917 18.525 46.8250195 18.525 27.2813718 18.5763 27.251364"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

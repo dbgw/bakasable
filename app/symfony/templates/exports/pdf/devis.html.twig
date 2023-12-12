@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Devis#
+			{{ command.id }}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+		<style>
+			* {
+				font-family: 'Poppins', sans-serif;
+			}
+			.invoice-box {
+				max-width: 800px;
+				margin: auto;
+				padding: 30px;
+				border-top: 6px solid #9bca3e;
+				border-bottom: 6px solid #9bca3e;
+				border-left: 1px solid #eee;
+				border-right: 1px solid #eee;
+				font-size: 16px;
+				line-height: 24px;
+				font-family: 'Poppins', sans-serif;
+				color: #363636;
+			}
+
+			.invoice-box table {
+				width: 100%;
+				line-height: inherit;
+				text-align: left;
+			}
+
+			.invoice-box table td {
+				vertical-align: top;
+				font-size: 14px;
+			}
+
+			@media only screen and(max-width: 600px) {
+				.invoice-box table tr.top table td {
+					width: 100%;
+					display: block;
+					text-align: center;
+				}
+
+				.invoice-box table tr.information table td {
+					width: 100%;
+					display: block;
+					text-align: center;
+				}
+			}
+
+			/** RTL **/
+			.invoice-box.rtl {
+				direction: rtl;
+				font-family: 'Poppins', sans-serif;
+			}
+
+			.invoice-box.rtl table {
+				text-align: right;
+			}
+
+			.invoice-box.rtl table tr td:nth-child(2) {
+				text-align: left;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="invoice-box">
+			<table cellpadding="0" cellspacing="0">
+				<tr class="top">
+					<td colspan="7">
+						<table style="border-bottom: 2px solid #9bca3e;">
+
+							<tr>
+								<td style="color: #9bca3e; font-size: 30px; font-weight: bold; margin: 0; vertical-align: middle;">
+									Devis n°
+									{{command.id}}
+
+								</td>
+								<td style="vertical-align: middle;">
+									{% set pictureUrl = command.benefit.user.picture ? base_path ~ '/public' ~ command.benefit.user.picture|str_tok : '' %}
+									{% if pictureUrl|file_exists %}
+										<img src="{{ pictureUrl|image64 }}" style="width: auto; height: 65px; border-radius: 8px; float:right"/>
+									{% endif %}
+								</td>
+							</tr>
+							<tr>
+								<td style="height: 25px;"></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td style="height: 25px;"></td>
+				</tr>
+				<tr>
+					<td colspan="7">
+						<table>
+							<tr>
+								<td style="width: 70%; font-size: 16px; font-weight: 500;">{{ command.benefit.user.enterprise }}</td>
+								<td style="font-size: 16px; font-weight: 500;">Destinataire</td>
+							</tr>
+							<tr>
+								<td style="height: 15px;"></td>
+							</tr>
+							<tr>
+								<td style="width: 70%; padding-right: 47px">
+									<table>
+										<tr>
+											<td style="padding: 17px 20px 19px;border-radius: 15px; background-color: #f5f5fa;">
+												<table>
+													{% if command.status %}
+														<tr>
+															<td>Date de devis:</td>
+															<td>
+																{{ command.dateSend|date("d/m/Y") }}
+															</td>
+														</tr>
+													{% endif %}
+
+													<tr>
+														<td>Référence du devis:</td>
+														<td>
+															{{command.id}}
+														</td>
+													</tr>
+													<tr>
+														<td>Date de validité du devis:</td>
+														<td>
+															{{ command.validationDate|date("d/m/Y") }}
+														</td>
+													</tr>
+												</table>
+
+											</td>
+										</tr>
+									</table>
+								</td>
+
+								<td>
+									{{ command.firstNameInvoice }}
+									{{ command.lastNameInvoice }}<br/>
+									{{ command.addressInvoice }}<br/>
+									{{ command.postalCodeInvoice }} 
+									{{ command.cityInvoice }}<br/>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td style="height: 35px;"></td>
+				</tr>
+				<tr>
+					<td colspan="7" style="font-size: 16px; font-weight: 500;">Informations additionnelles</td>
+				</tr>
+				<tr>
+					<td colspan="7">{{command.title}}</td>
+				</tr>
+				<tr>
+					<td style="height: 25px;"></td>
+				</tr>
+				<tr>
+					<td style="height: 25px;"></td>
+				</tr>
+				<tr>
+					<td style="font-size: 14px; font-weight: 500; padding: 15px 0; border-bottom: 1px solid #e8e8e8;">Quantité</td>
+					<td style="font-size: 14px; font-weight: 500; padding: 15px 0; border-bottom: 1px solid #e8e8e8;">Description</td>
+					<td style="font-size: 14px; font-weight: 500; padding: 15px 0; border-bottom: 1px solid #e8e8e8;">Prix unitaire HT</td>
+					<td style="font-size: 14px; font-weight: 500; padding: 15px 0; border-bottom: 1px solid #e8e8e8;">Réduction %</td>
+					<td style="font-size: 14px; font-weight: 500; padding: 15px 0; border-bottom: 1px solid #e8e8e8;">TVA %</td>
+					<td style="font-size: 14px; font-weight: 500; padding: 15px 0; border-bottom: 1px solid #e8e8e8;">Total HT</td>
+					<td style="font-size: 14px; font-weight: 500; padding: 15px 0; border-bottom: 1px solid #e8e8e8;">Total TTC</td>
+				</tr>
+
+				{% set totaltva = 0 %}
+				{% set totalht = 0 %}
+				{% set totalttc = 0 %}
+				{% for line in command.devisLines %}
+					{% set ht = line.unityPrice * line.qte  %}
+					{% set reduction = ht / 100 * line.reduction %}
+					{% set ht = ht - reduction  %}
+					{% set tva = ht / 100 * line.tva %}
+					{% set totaltva = totaltva + tva  %}
+					{% set totalht = totalht + ht  %}
+					{% set totalttc = totalttc + ht + tva  %}
+					<tr>
+						<td style="font-size: 14px; font-weight: 400; padding: 15px 0; border-bottom: 1px solid #e8e8e8;">{{line.qte}}</td>
+						<td style="font-size: 14px; font-weight: 400; padding: 15px 0; border-bottom: 1px solid #e8e8e8;">{{line.description}}</td>
+						<td style="font-size: 14px; font-weight: 400; padding: 15px 0; border-bottom: 1px solid #e8e8e8;">{{line.unityPrice}}</td>
+						<td style="font-size: 14px; font-weight: 400; padding: 15px 0; border-bottom: 1px solid #e8e8e8;">{{line.reduction}}</td>
+						<td style="font-size: 14px; font-weight: 400; padding: 15px 0; border-bottom: 1px solid #e8e8e8;">{{line.tva}}</td>
+						<td style="font-size: 14px; font-weight: 400; padding: 15px 0; border-bottom: 1px solid #e8e8e8;">{{ht | number_format(2)}}</td>
+						<td style="font-size: 14px; font-weight: 400; padding: 15px 0; border-bottom: 1px solid #e8e8e8;">{{(ht + tva) |number_format(2)}}</td>
+					</tr>
+				{% endfor %}
+				<tr>
+					<td style="height: 25px;"></td>
+				</tr>
+
+				<tr>
+					<td colspan="7">
+						<table>
+							<tr>
+								<td style="text-align: right;">
+									<span style="font-weight: 600; margin-right: 15px;">Total HT:
+									</span>
+									{% if totalht < 0 %}
+										0,00
+									{% else %}
+										{{totalht | number_format(2)}}
+									{% endif %}
+								</td>
+							</tr>
+							<tr>
+								<td style="text-align: right;">
+									<span style="font-weight: 600; margin-right: 15px;">
+										Total TVA:</span>
+									{% if totaltva < 0 %}
+										0,00
+									{% else %}
+										{{totaltva | number_format(2)}}
+									{% endif %}
+								</td>
+							</tr>
+							<tr>
+								<td style="text-align: right; font-weight: 600; color: #9bca3e;">
+									<span style="margin-right: 15px;">
+										Total TTC:</span>
+									{% if totalttc < 0 %}
+										0,00
+									{% else %}
+										{{totalttc | number_format(2)}}
+									{% endif %}
+								</td>
+							</tr>
+						</table>
+
+					</td>
+				</tr>
+				<tr>
+					<td style="height: 25px;"></td>
+				</tr>
+
+				<tr>
+					<td colspan="7">
+						<table>
+							<tr>
+								<td style="font-size: 16px; font-weight: 500;">Notes additionnelles</td>
+							</tr>
+							<tr>
+								<td>
+									{{command.extraNote}}
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td style="height: 25px;"></td>
+				</tr>
+				<tr>
+					<td colspan="7">
+						<table>
+							<tr>
+								<td style="text-align: center;">
+									{{ command.benefit.user.enterprise }}
+									-
+									{{ command.benefit.user.addressBilling }}
+									{{ command.benefit.user.additionalAddressBilling }}
+									{{ command.benefit.user.postalCodeBilling }}
+									{{ command.benefit.user.cityBilling }}<br>
+									N° SIRET :
+									{{ command.benefit.user.siret }}
+									- N° TVA intacommunautaire :
+									{{ command.benefit.user.intraCommunityVAT }}
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

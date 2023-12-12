@@ -1,0 +1,120 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    mailer_name: "%env(MAILER_NAME)%"
+    mailer_from: "%env(MAILER_FROM)%"
+    mailer_domain: "%env(MAILER_DOMAIN)%"
+    mailer_admin: "%env(MAILER_ADMIN)%"
+    mailer_strip: "%env(MAILER_STRIP)%"
+    mailer_to: "%env(MAILER_TO)%"
+    mailer_contact: "%env(MAILER_CONTACT)%"
+    mailer_phone: "%env(MAILER_PHONE)%"
+    mercure_public_url: "%env(MERCURE_PUBLIC_URL)%"
+    elasticsearch_url: "%env(ELASTICSEARCH_URL)%"
+    prefix_backend: "%env(PREFIX_BACKEND)%"
+    stripe_public_key: "%env(STRIPE_PUBLIC_KEY)%"
+    stripe_secret_key: "%env(STRIPE_SECRET_KEY)%"
+    google_key: "%env(GOOGLE_KEY)%"
+    recaptcha_key: "%env(RECAPTCHA_KEY)%"
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+        bind:
+            FOS\ElasticaBundle\Finder\TransformedFinder $universeFinder: "@fos_elastica.finder.universe"
+            FOS\ElasticaBundle\Finder\TransformedFinder $serviceFinder: "@fos_elastica.finder.service"
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: "../src/"
+        exclude:
+            - "../src/DependencyInjection/"
+            - "../src/Entity/"
+            - "../src/Kernel.php"
+            - "../src/Tests/"
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: "../src/Controller/"
+        tags: ["controller.service_arguments"]
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+
+    App\EntityListener\NewServiceEntityListener:
+        tags:
+            - {
+                  name: "doctrine.orm.entity_listener",
+                  event: "prePersist",
+                  entity: 'App\Entity\NewService',
+              }
+
+    App\EntityListener\UserEntityListener:
+        tags:
+            - {
+                  name: "doctrine.orm.entity_listener",
+                  event: "prePersist",
+                  entity: 'App\Entity\User',
+              }
+            - {
+                  name: "doctrine.orm.entity_listener",
+                  event: "preUpdate",
+                  entity: 'App\Entity\User',
+              }
+
+    App\Service\SendEmail:
+        arguments:
+            $mailer_name: "%mailer_name%"
+            $mailer_from: "%mailer_from%"
+            $mailer_domain: "%mailer_domain%"
+            $mailer_to: "%mailer_to%"
+            $mailer_contact: "%mailer_contact%"
+            $mailer_phone: "%mailer_phone%"
+            $prefix_backend: "%prefix_backend%"
+            $mailer_admin: "%mailer_admin%"
+            $mailer_strip: "%mailer_strip%"
+
+    App\Service\StripeProvider:
+        arguments:
+            $publickey: "%stripe_public_key%"
+            $secretkey: "%stripe_secret_key%"
+
+    App\Service\JwtProvider:
+        arguments:
+            $key: "%env(MERCURE_JWT_KEY)%"
+
+    event_jwt_authentication_failure_listener:
+        class: App\EventListener\AuthenticationFailureListener
+        tags:
+            - {
+                  name: kernel.event_listener,
+                  event: lexik_jwt_authentication.on_authentication_failure,
+                  method: onAuthenticationFailureResponse,
+              }
+
+    event_jwt_created_listener:
+        class: App\EventListener\JWTCreatedListener
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - {
+                  name: kernel.event_listener,
+                  event: lexik_jwt_authentication.on_jwt_created,
+                  method: onJWTCreated,
+              }
+
+    App\EventListener\NewMessageListener:
+        arguments:
+            $public_url: "%mercure_public_url%"
+        tags:
+            - # these are the options required to define the entity listener
+              name: "doctrine.orm.entity_listener"
+              event: "postPersist"
+              entity: 'App\Entity\Message'
+              method: "postPersist"

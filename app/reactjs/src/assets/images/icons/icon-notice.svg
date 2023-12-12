@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="3px" height="9px" viewBox="0 0 3 9" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>!</title>
+    <defs>
+        <path d="M10.5697365,11.5479204 L10.8019892,5.78836805 L8.99756416,5.78836805 L9.22981689,11.5479204 L10.5697365,11.5479204 Z M10.9091828,13.862925 L10.9091828,12.6662801 L8.92610179,12.6662801 L8.92610179,13.862925 L10.9091828,13.862925 Z" id="path-1"></path>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Info" transform="translate(-8.000000, -7.000000)" fill-rule="nonzero">
+            <g id="Group" transform="translate(0.000000, 2.000000)">
+                <g id="!" transform="translate(0.000000, 0.000000)">
+                    <use fill="#000000" xlink:href="#path-1"></use>
+                    <use fill="#FFFFFF" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

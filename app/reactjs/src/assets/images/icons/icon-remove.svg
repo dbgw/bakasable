@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 45</title>
+    <defs>
+        <polygon id="path-1" points="11.9478297 9.31764418 11.9478297 8.57919727 4.8284441 8.57919727 4.8284441 9.31764418"></polygon>
+    </defs>
+    <g id="UI-Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Espace-réparateur-:-Nouveau-devis" transform="translate(-799.000000, -491.000000)" fill-rule="nonzero">
+            <g id="Group-49" transform="translate(35.000000, 108.000000)">
+                <g id="Group-10" transform="translate(0.000000, 222.125288)">
+                    <g id="Group-34" transform="translate(0.000000, 46.000000)">
+                        <g id="Group-46" transform="translate(641.000000, 112.000000)">
+                            <g id="Group-45" transform="translate(123.000000, 3.000000)">
+                                <g id="Group" fill="#E67C2E">
+                                    <ellipse id="Ellipse_1168-2" cx="8.67777778" cy="8.67965782" rx="8.67777778" ry="8.67965782"></ellipse>
+                                </g>
+                                <g id="-">
+                                    <use fill="#000000" xlink:href="#path-1"></use>
+                                    <use fill="#FFFFFF" xlink:href="#path-1"></use>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

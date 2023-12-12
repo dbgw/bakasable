@@ -1,0 +1,60 @@
+{% extends "emails/base.html.twig" %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block header %}{{ parent() }}{% endblock %}
+
+{% block content %}
+    <tr>
+        <td class="" style="vertical-align:top;width:588px;">
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                <tbody>
+                    <tr>
+                        <td style="vertical-align:top;padding:50px 23px 30px;">
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style width="100%">
+                                <tbody>
+                                
+                                    <tr>
+                                        <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                                            <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                                                Bonjour,
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                                            <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                                                Vous avez soumis une demande d’inscription sur notre plateforme 
+                                                <a class="link-default" href="{{urlHome}}" target="_blank" style="color: #9ACA3C; line-height: 18px; transition: .5s all;">Fingz.fr</a>. 
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                                            <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                                                Nous vous en remercions et nous avons hâte de vous accueillir au sein de la communauté des artisans partenaires de
+                                                <a class="link-default" href="{{urlHome}}" target="_blank" style="color: #9ACA3C; line-height: 18px; transition: .5s all;">Fingz.fr</a>. 
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" style="font-size:0px;padding:0px;word-break:break-word;">
+                                            <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                                                Nous étudions votre demande et revenons vers vous dans les plus brefs délais afin de la valider et préparer le lancement de votre boutique en ligne.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+              				</table>
+            			</td>
+          			</tr>
+        		</tbody>
+      		</table>
+    	</td>
+  	</tr>
+{% endblock %}
+
+{% block footer %}
+  {% set textFooter = 'A très bientôt,' %}
+  {{ parent() }}
+{% endblock %}

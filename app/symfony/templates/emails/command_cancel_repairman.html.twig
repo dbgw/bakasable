@@ -1,0 +1,140 @@
+{% extends "emails/base.html.twig" %}
+
+{% block title %}
+  {{ parent() }}
+{% endblock %}
+
+{% block header %}
+  {{ parent() }}
+{% endblock %}
+
+{% block content %}
+  <tr>
+    <td class="" style="vertical-align:top;width:588px;">
+      <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+        <tbody>
+          <tr>
+            <td style="vertical-align:top;padding:50px 23px 30px;">
+              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style width="100%">
+                <tbody>
+
+                  <tr>
+                    <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                      <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                        Bonjour   
+                          {{ command.benefit.user.firstName }}
+                          {{ command.benefit.user.lastName }}
+                        ,                   
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                      <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+
+                          {% if cancelBy == "admin" %}
+                            Votre commande a été annulée par l'administrateur.
+                          {% elseif cancelBy == "client" %}
+                            Votre commande a été annulée par le client.        
+                          {% elseif cancelBy == "repairman" %}
+                            Vous avez annulé votre commande.       
+                          {% endif %}
+
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                      <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                        <strong style="font-weight: 600;">
+                          Raison :             
+                        </strong>
+                        {{ command.rejectRaison }}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                      <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                        <strong style="font-weight: 600;">
+                          Référence de la commande :                    
+                        </strong>
+                        {{ command.id }}
+                      </div>
+                    </td>
+                  </tr>
+                  {% if cancelBy == "client" %}
+                    <tr>
+                      <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                        <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                          <strong style="font-weight: 600;">
+                            Nom du client :                      
+                          </strong>
+                          {{ command.client.firstName }} {{ command.client.lastName }}
+                        </div>
+                      </td>
+                    </tr>
+                  {% endif %}
+                  <tr>
+                    <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                      <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                        <strong style="font-weight: 600;">
+                          Prestation :                      
+                        </strong>
+                        {{ command.benefit.service.name }}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                      <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                        <strong style="font-weight: 600;">
+                          Type de prestation :                    
+                        </strong>
+                        {{ command.benefit.typeService | capitalize }}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                      <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                        <strong style="font-weight: 600;">
+                          Montant :         
+                        </strong>
+                        {{ command.total | number_format(2) }} € TTC
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left" style="font-size:0px;padding:0 0 20px;word-break:break-word;">
+                      <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                        Vous pouvez le visualiser dans votre espace.                    
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left" style="font-size:0px;padding:0px;word-break:break-word;">
+                      <div style="font-family:Montserrat;font-size:14px;font-weight:500;line-height:18px;text-align:left;color:#000000;">
+                        Pour cela, 
+                        <a class="link-default" href="{{ urlCommand }}" target="_blank" style="color: #9ACA3C; line-height: 18px; transition: .5s all;">
+                            cliquez ici
+                        </a>.
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+{% endblock %}
+
+{% block footer %}
+  {% if cancelBy == "repairman" %}
+    {% set textFooter = 'Cordialement,' %}
+  {% endif %} 
+  {{ parent() }}
+{% endblock %}

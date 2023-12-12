@@ -1,0 +1,31 @@
+# Read the documentation: https://github.com/FriendsOfSymfony/FOSElasticaBundle/blob/master/doc/setup.md
+fos_elastica:
+    clients:
+        default: { url: "%env(ELASTICSEARCH_URL)%" }
+    indexes:
+        universe:
+            properties:
+                name: { boost: 3 }
+                description: { boost: 2 }
+            persistence:
+                driver: orm
+                model: App\Entity\Universe
+        service:
+            properties:
+                name: { boost: 5 }
+                description: { boost: 2 }
+                categories:
+                    type: object
+                    properties:
+                        name: { boost: 3 }
+                        parent:
+                            type: object
+                            properties:
+                                name: { boost: 4 }
+                                universe:
+                                    type: object
+                                    properties:
+                                        id: { boost: 6 }
+            persistence:
+                driver: orm
+                model: App\Entity\Service
